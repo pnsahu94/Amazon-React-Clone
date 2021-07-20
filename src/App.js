@@ -1,36 +1,30 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./Home";
+import React, { useEffect } from "react";
 import "./App.css";
-import Header from "./Header";
+import Header from ".//Header";
+import HeaderTwo from "./HeaderTwo";
+import Home from "./Home";
+import Checkout from "./Checkout.js";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from ".//Login";
 import Footer from "./Footer";
-import Orders from "./Orders";
-import Login from "./Login";
-import Payment from "./Payment";
-import Elements from "./Elements";
-import Checkout from "./Checkout";
-import { useEffect } from "react";
+// import CreateAccount from "./CreateAccount";
 import { auth } from "./firebase";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "./StateProvider.js";
+import BackToTop from "./BackToTop";
+import Payment from "./Payment";
+import Orders from "./Orders";
 
 function App() {
     const [{}, dispatch] = useStateValue();
 
     useEffect(() => {
-        // will only run once when the app component loads...
-
         auth.onAuthStateChanged((authUser) => {
-            console.log("THE USER IS >>> ", authUser);
-
             if (authUser) {
-                // the user just logged in / the user was logged in
-
                 dispatch({
                     type: "SET_USER",
                     user: authUser,
                 });
             } else {
-                // the user is logged out
                 dispatch({
                     type: "SET_USER",
                     user: null,
@@ -41,32 +35,53 @@ function App() {
 
     return (
         <Router>
-            <div className="app">
+            <div className="app" id="app">
                 <Switch>
-                    <Route path="/orders">
-                        <Header />
-                        <Orders />
-                    </Route>
+                    {/* login route */}
                     <Route path="/login">
                         <Login />
                     </Route>
+
+                    {/* createAccount route
+                    <Route path="/createAccount">
+                        <CreateAccount />
+                    </Route> */}
+
+                    {/* checkout route */}
                     <Route path="/checkout">
                         <Header />
+                        <HeaderTwo />
                         <Checkout />
+                        <Footer />
                     </Route>
+
+                    {/* payment route */}
                     <Route path="/payment">
                         <Header />
+                        <HeaderTwo />
                         {/* <Elements stripe={promise}> */}
-                        <Elements>
-                            <Payment />
-                        </Elements>
+                        <Payment />
+                        {/* </Elements> */}
+                        <Footer />
                     </Route>
+
+                    {/* orders route */}
+                    <Route path="/orders">
+                        <Header />
+                        <HeaderTwo />
+                        <Orders />
+                        <Footer />
+                    </Route>
+
+                    {/* home route/ Default route */}
                     <Route path="/">
                         <Header />
+                        <HeaderTwo />
                         <Home />
+                        <BackToTop />
+                        <Footer />
                     </Route>
                 </Switch>
-                <Footer />
             </div>
         </Router>
     );

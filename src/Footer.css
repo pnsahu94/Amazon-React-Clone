@@ -1,11 +1,28 @@
 .footer {
     background-color: #232f3e;
-    color: white;
-    text-align: center;
-    padding: 20px;
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+    color: #ffffff;
+    overflow: hidden;
+    width: 100%;
 }
 
-a {
-    color: white;
-    text-decoration: none;
+.footer__container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer__container > div {
+    margin: 50px 0px;
+}
+
+.footer__title {
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.footer__all > p {
+    margin-bottom: 8px;
 }

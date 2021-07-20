@@ -13,6 +13,12 @@
     z-index: 1;
 }
 
+.product:hover {
+    box-shadow: 0px 0px 5px 0px #131921;
+    transform: scale(1.05);
+    transition: all 100ms linear;
+}
+
 .product__info {
     margin-bottom: 15px;
     display: flex;

@@ -40,7 +40,6 @@ function Payment() {
     console.log("👱", user);
 
     const handleSubmit = async (event) => {
-        // do all the fancy stripe stuff...
         event.preventDefault();
         setProcessing(true);
 

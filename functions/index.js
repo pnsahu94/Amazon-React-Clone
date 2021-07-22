@@ -1,24 +1,21 @@
 const functions = require("firebase-functions");
-
-// Create and Deploy Your First Cloud Functions
-
 const express = require("express");
 const cors = require("cors");
-
 const stripe = require("stripe")(
     "sk_test_51JFi3eSBdHONOyZgFj8oXraqptKKSZuv0LOUU9e6EFvKtQUGFwk05xt7keob5Vin9XgvtLyt1lWtf3GWEg38lqKX00yqMdv5Tl"
 );
 
 // API
 
-// App config
+// - App config
 const app = express();
 
-// Middlewares
+// - Middlewares
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-// API routes
+// - API routes
+
 app.post("/payments/create", async (request, response) => {
     const total = request.query.total;
 
@@ -33,5 +30,5 @@ app.post("/payments/create", async (request, response) => {
     });
 });
 
-// Listen Command
+// - Listen command
 exports.api = functions.https.onRequest(app);

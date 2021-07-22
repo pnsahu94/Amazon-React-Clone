@@ -1,3 +1,8 @@
+# Amazon Clone App - Made with ReactJS
+
+App Deployed at https://pnsahu94.github.io/Amazon-React-Clone/ \
+Note - Payment Feature is not working on deployed app. This feature can be utilized when App is downloaded and run locally\
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
